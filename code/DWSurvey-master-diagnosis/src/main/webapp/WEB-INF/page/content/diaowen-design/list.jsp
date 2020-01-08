@@ -82,10 +82,10 @@ button {
 					<div style="padding: 25px 45px;overflow: auto;padding-top: 20px;">
 							<div style="padding: 5px;color: #666565;letter-spacing: 2px;">
 							所有问卷&nbsp;&nbsp;|&nbsp;&nbsp;
-								<a href="${ctx }/design/my-survey-create!save.action" id="surveyAdd-a" style="outline: none;text-decoration: none;" ><i class="fa fa-plus " aria-hidden="true"></i>&nbsp;新建问卷</a>
+								<a href="${ctx }/design/my-survey-create!save" id="surveyAdd-a" style="outline: none;text-decoration: none;" ><i class="fa fa-plus " aria-hidden="true"></i>&nbsp;新建问卷</a>
 							</div>
 
-							<form action="${ctx}/design/my-survey.action" method="post" >
+							<form action="${ctx}/design/my-survey" method="post" >
 							<div class="contacts_search" style="padding: 5px;color:#666565;" >
 								<div style="padding-left: 20px;padding-top: 8px;padding-bottom: 8px;">
 									<span style="font-size: 14px;vertical-align: middle;">状态&nbsp;</span>
@@ -132,11 +132,11 @@ button {
 										</td>
 										<td align="left">
 											<div class="btn-group surveyLeftBtnGroup">
-											  <a class="btn btn-default" href="${ctx }/design/my-survey-design.action?surveyId=${en.id}" title="设计"data-toggle="tooltip" data-placement="top" ><i class="fa fa-pencil-square-o"></i></a>
-											  <a class="btn btn-default" href="${ctx }/design/my-collect.action?surveyId=${en.id}" title="收集答卷" data-toggle="tooltip" data-placement="top" ><i class="fa fa-comments-o"></i></a>
-											  <a class="btn btn-default" href="${ctx }/da/survey-report!defaultReport.action?surveyId=${en.id}" title="分析报告" data-toggle="tooltip" data-placement="top" ><i class="fa fa-line-chart"></i></a>
+											  <a class="btn btn-default" href="${ctx }/design/my-survey-design?surveyId=${en.id}" title="设计"data-toggle="tooltip" data-placement="top" ><i class="fa fa-pencil-square-o"></i></a>
+											  <a class="btn btn-default" href="${ctx }/design/my-collect?surveyId=${en.id}" title="收集答卷" data-toggle="tooltip" data-placement="top" ><i class="fa fa-comments-o"></i></a>
+											  <a class="btn btn-default" href="${ctx }/da/survey-report!defaultReport?surveyId=${en.id}" title="分析报告" data-toggle="tooltip" data-placement="top" ><i class="fa fa-line-chart"></i></a>
 											  <a class="btn btn-default copySurvey" href="#${en.id}" title="复制一份" data-toggle="tooltip" data-placement="top" ><i class="fa fa-files-o"></i></a>
-											  <a class="btn btn-default deleteSurvey" href="${ctx}/design/my-survey!delete.action?id=${en.id}" title="删除问卷" data-toggle="tooltip" data-placement="top" ><i class="fa fa-trash-o fa-fw"></i></a>
+											  <a class="btn btn-default deleteSurvey" href="${ctx}/design/my-survey!delete?id=${en.id}" title="删除问卷" data-toggle="tooltip" data-placement="top" ><i class="fa fa-trash-o fa-fw"></i></a>
 											</div>&nbsp;
 											<div class="btn-group" style="display: none;">
 												<!-- <a class="btn btn-default" href="#"><i class="fa fa-eye"></i></a> -->
@@ -160,28 +160,28 @@ button {
 								<div style="padding-top: 15px;text-align: center;">
 									<div class="btn-group">
 										<c:if test="${page.pageNo > 1}">
-											<a href="${ctx }/design/my-survey.action?page.pageNo=${page.pageNo-1}" class="btn btn-default">&lt;</a>
+											<a href="${ctx }/design/my-survey?page.pageNo=${page.pageNo-1}" class="btn btn-default">&lt;</a>
 										</c:if>
 										<c:if test="${page.startpage > 1}">
-											<a href="${ctx }/design/my-survey.action?page.pageNo=1" class="btn btn-default">1</a>
+											<a href="${ctx }/design/my-survey?page.pageNo=1" class="btn btn-default">1</a>
 											<c:if test="${page.startpage > 2 }">
 												<span>...</span>
 											</c:if>
 										</c:if>
 										<c:forEach begin="${page.startpage }" end="${page.endpage }" var="en">
 											<c:choose>
-												<c:when test="${page.pageNo eq en }"><a href="${ctx }/design/my-survey.action?page.pageNo=${en }" class="btn btn-default" style="background: #D3DEED;">${en }</a></c:when>
-												<c:otherwise><a href="${ctx }/design/my-survey.action?page.pageNo=${en}" class="btn btn-default">${en }</a></c:otherwise>
+												<c:when test="${page.pageNo eq en }"><a href="${ctx }/design/my-survey?page.pageNo=${en }" class="btn btn-default" style="background: #D3DEED;">${en }</a></c:when>
+												<c:otherwise><a href="${ctx }/design/my-survey?page.pageNo=${en}" class="btn btn-default">${en }</a></c:otherwise>
 											</c:choose>
 										</c:forEach>
 										<c:if test="${page.totalPage > (page.endpage)}">
 											<c:if test="${page.totalPage > (page.endpage+1)}">
 												<span>...</span>
 											</c:if>
-											<a href="${ctx }/design/my-survey.action?page.pageNo=${page.totalPage}" class="btn btn-default">${page.totalPage }</a>
+											<a href="${ctx }/design/my-survey?page.pageNo=${page.totalPage}" class="btn btn-default">${page.totalPage }</a>
 										</c:if>
 										<c:if test="${page.totalPage > page.pageNo}">
-											<a href="${ctx }/design/my-survey.action?page.pageNo=${page.pageNo+1}" class="btn btn-default">&gt;</a>
+											<a href="${ctx }/design/my-survey?page.pageNo=${page.pageNo+1}" class="btn btn-default">&gt;</a>
 										</c:if>
 										
 									</div>
@@ -270,7 +270,7 @@ $(".copySurvey").click(function(){
 
 					var params="surveyName="+surveyName;
 					params+="&fromBankId="+surveyId;
-					window.location.href="${ctx}/design/my-survey-design!copySurvey.action?"+params;
+					window.location.href="${ctx}/design/my-survey-design!copySurvey?"+params;
 				}
 			},
 			"CENCEL":{
@@ -323,7 +323,7 @@ $("#surveyAdd-a").click(function(){
 	                surveyName=optionValue=escape(encodeURIComponent(surveyName));
 	                
 	                var params="surveyName="+surveyName;
-	            	window.location.href="${ctx}/design/my-survey-create!save.action?"+params;
+	            	window.location.href="${ctx}/design/my-survey-create!save?"+params;
 	            }
 			},
 			"CENCEL":{

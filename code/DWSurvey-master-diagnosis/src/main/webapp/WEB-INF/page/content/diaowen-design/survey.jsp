@@ -55,8 +55,8 @@
 			<%--</div>--%>
 			<%--<div id="header_right">--%>
 				<%--<div style="line-height: 22px;">--%>
-					<%--<a href="${ctx }/design/my-survey.action">问卷</a>&nbsp;&nbsp;<a--%>
-						<%--href="${ctx }/ic/user!myaccount.action">账号</a>--%>
+					<%--<a href="${ctx }/design/my-survey">问卷</a>&nbsp;&nbsp;<a--%>
+						<%--href="${ctx }/ic/user!myaccount">账号</a>--%>
 				<%--</div>--%>
 			<%--</div>--%>
 		<%--</div>--%>
@@ -75,7 +75,7 @@
 							<li style="padding: 0px; font: 12px; line-height: 22px;">
                                 <%--<a href="/diaowen" target="_black"--%>
 								<%--style="text-decoration: none; color: gray;">帮助</a>--%>
-                                    <a href="${ctx }/design/my-survey.action">问卷</a>
+                                    <a href="${ctx }/design/my-survey">问卷</a>
                             </li>
 						</ul>
 					</div>
@@ -1191,7 +1191,7 @@
 				<div class="dwToolbar_icon"></div>
 			</li> -->
 									<!-- <li id="logicToolbar" class="logicToolbar_li">
-				<a href="${ctx }/design/my-survey-design!previewDev.action?surveyId=${param['surveyId']}" >
+				<a href="${ctx }/design/my-survey-design!previewDev?surveyId=${param['surveyId']}" >
 				<span class="dwToolbar_icon"></span>
 				</a>
 			</li>
@@ -1200,28 +1200,28 @@
 			</li> -->
 									<!--
 			<li id="qubankToolbar" >
-				<a href="${ctx }/design/my-survey-design!previewDev.action?surveyId=${param['surveyId']}" >
+				<a href="${ctx }/design/my-survey-design!previewDev?surveyId=${param['surveyId']}" >
 				<span class="dwToolbar_icon" title="题库"></span>
 				</a>
 			</li>
 			<li id="exportToolbar">
-				<a href="${ctx }/design/my-survey-design!previewDev.action?surveyId=${param['surveyId']}" >
+				<a href="${ctx }/design/my-survey-design!previewDev?surveyId=${param['surveyId']}" >
 				<span class="dwToolbar_icon" title="导入"></span>
 				</a>
 			</li>
 			 -->
 									<li id="surveyAttrSetToolbar" class="surveyAttrSetToolbar_li">
 										<a
-										href="${ctx }/design/my-survey-design!previewDev.action?surveyId=${param['surveyId']}">
+										href="${ctx }/design/my-survey-design!previewDev?surveyId=${param['surveyId']}">
 											<span class="dwToolbar_icon" title="问卷设置"></span>
 									</a>
 									</li>
 									<li id="surveyStyleEditToolbar"><a
-										href="${ctx }/design/my-survey-design!previewDev.action?surveyId=${param['surveyId']}">
+										href="${ctx }/design/my-survey-design!previewDev?surveyId=${param['surveyId']}">
 											<span class="dwToolbar_icon" title="样式编辑"></span>
 									</a></li>
 									<%-- <li id="previewToolbar">
-				<a href="${ctx }/design/my-survey-design!previewDev.action?surveyId=${param['surveyId']}" >
+				<a href="${ctx }/design/my-survey-design!previewDev?surveyId=${param['surveyId']}" >
 				<span class="dwToolbar_icon" title="预览"></span>
 				</a>
 			</li> --%>

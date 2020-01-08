@@ -50,7 +50,7 @@
 	<div id="wrap">
 		<div class="root-body" style="padding-top: 20px;">
 			<div class="middle-body" style="padding-top: 10px;">
-				<form action="${ctx }/sy/user/nosm/survey-answer!save.action"
+				<form action="${ctx }/sy/user/nosm/survey-answer!save"
 					method="post">
 					<input type="hidden" name="surveyId" value="${param['parentId'] }" />
 					<div class="middle-body-title">

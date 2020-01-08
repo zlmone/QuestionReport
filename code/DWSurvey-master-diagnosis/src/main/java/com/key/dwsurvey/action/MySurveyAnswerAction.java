@@ -59,6 +59,7 @@ public class MySurveyAnswerAction extends ActionSupport{
     		if(survey!=null){
     			page=surveyAnswerManager.answerPage(page, surveyId);
     			request.setAttribute("survey", survey);
+    			request.setAttribute("page", page);
     		}
     	}
 		return SUCCESS;

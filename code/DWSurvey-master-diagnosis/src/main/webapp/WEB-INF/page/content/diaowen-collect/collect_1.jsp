@@ -23,23 +23,23 @@
 		                	<div class="selc">
 		                    	<div class="selcc tbtag">
 		                            <div class="seli"><a class="nx-1 sur_collectSet" href="#collectSet">收集规则</a></div>
-		                            <div class="seli"><a class="nx-2" href="${ctx }/design/my-survey-design!previewDev.action?surveyId=${surveyId}">样式设置</a></div>
-		                            <div class="seli"><a class="nx-6 sur_edit" href="${ctx }/design/my-survey-design.action?surveyId=${surveyId}">问卷编辑</a></div>
+		                            <div class="seli"><a class="nx-2" href="${ctx }/design/my-survey-design!previewDev?surveyId=${surveyId}">样式设置</a></div>
+		                            <div class="seli"><a class="nx-6 sur_edit" href="${ctx }/design/my-survey-design?surveyId=${surveyId}">问卷编辑</a></div>
 		                        </div>
 		                    </div>
 		                </div>
 		            </div>
 				</li>
 				<li><span class="csscStep csscStepLine"><span class="csscStepLeft">&nbsp;</span><span class="csscStepRight">&nbsp;</span></span></li>
-				<li><a href="${ctx }/design/my-collect.action?surveyId=${surveyId }"  class="clickHideMenu csscStep csscStep5 active"><span class="csscStepLeft">&nbsp;</span><span class="csscStepCenter">数据收集</span><span class="csscStepRight" >&nbsp;</span></a>
+				<li><a href="${ctx }/design/my-collect?surveyId=${surveyId }"  class="clickHideMenu csscStep csscStep5 active"><span class="csscStepLeft">&nbsp;</span><span class="csscStepCenter">数据收集</span><span class="csscStepRight" >&nbsp;</span></a>
 				</li>
 				<li><span class="csscStep csscStepLine"><span class="csscStepLeft">&nbsp;</span><span class="csscStepRight">&nbsp;</span></span></li>
-				<li><a href="${ctx }/da/survey-report!defaultReport.action?surveyId=${surveyId}"  class="clickHideMenu csscStep csscStep6"><span class="csscStepLeft">&nbsp;</span><span class="csscStepCenter">数据分析</span><span class="csscStepRight">&nbsp;</span></a>
+				<li><a href="${ctx }/da/survey-report!defaultReport?surveyId=${surveyId}"  class="clickHideMenu csscStep csscStep6"><span class="csscStepLeft">&nbsp;</span><span class="csscStepCenter">数据分析</span><span class="csscStepRight">&nbsp;</span></a>
 					<div class="a-w-sel">
 		            	<div class="w-sel" style="margin-top: 4px;margin-left: 15px;">
 		                	<div class="selc">
 		                    	<div class="selcc tbtag">
-		                            <div class="seli"><a class="nx-1" href="${ctx }/da/survey-report!defaultReport.action?surveyId=${surveyId}">统计表格</a></div>
+		                            <div class="seli"><a class="nx-1" href="${ctx }/da/survey-report!defaultReport?surveyId=${surveyId}">统计表格</a></div>
 		                        </div>
 		                    </div>
 		                </div>
@@ -53,11 +53,11 @@
 		<div class="main-tabs-content bodyCenter">
 			<div class="tab-content">
 				<div class="tab-content-collectTab">
-					<a href="${ctx }/design/my-collect.action?surveyId=${surveyId}" class="collectTab tabItem_1 active"><span class="collectTabItemLeft">&nbsp;</span><span>答卷地址</span></a>
-					<a href="${ctx }/design/my-collect.action?surveyId=${surveyId}&tabId=share" class="collectTab tabItem_4" ><span class="collectTabItemLeft">&nbsp;</span><span>社交分享</span></a>
-					<a href="${ctx }/design/my-collect.action?surveyId=${surveyId}&tabId=sitecomp" class="collectTab tabItem_5"><span class="collectTabItemLeft">&nbsp;</span><span>网站组件</span></a>
-					<%-- <a href="${ctx }/design/my-collect.action?surveyId=${surveyId}&tabId=iframe" class="collectTab tabItem_6"><span class="collectTabItemLeft">&nbsp;</span><span>IFrame嵌入</span></a> --%>
-					<a href="${ctx }/design/my-collect.action?surveyId=${surveyId}&tabId=weixin" class="collectTab tabItem_2"><span class="collectTabItemLeft">&nbsp;</span><span>微信收集</span></a>
+					<a href="${ctx }/design/my-collect?surveyId=${surveyId}" class="collectTab tabItem_1 active"><span class="collectTabItemLeft">&nbsp;</span><span>答卷地址</span></a>
+					<a href="${ctx }/design/my-collect?surveyId=${surveyId}&tabId=share" class="collectTab tabItem_4" ><span class="collectTabItemLeft">&nbsp;</span><span>社交分享</span></a>
+					<a href="${ctx }/design/my-collect?surveyId=${surveyId}&tabId=sitecomp" class="collectTab tabItem_5"><span class="collectTabItemLeft">&nbsp;</span><span>网站组件</span></a>
+					<%-- <a href="${ctx }/design/my-collect?surveyId=${surveyId}&tabId=iframe" class="collectTab tabItem_6"><span class="collectTabItemLeft">&nbsp;</span><span>IFrame嵌入</span></a> --%>
+					<a href="${ctx }/design/my-collect?surveyId=${surveyId}&tabId=weixin" class="collectTab tabItem_2"><span class="collectTabItemLeft">&nbsp;</span><span>微信收集</span></a>
 				</div>
 			</div>
 		</div>
@@ -149,10 +149,10 @@
 								<div style="padding-top: 15px;overflow: auto;clear: both;">
 								<div class="scmcSurveyTdCode">
 									<%-- <img alt="" src="${ctx }/images/style-model/secode.png" height="130" > --%>
-									<img alt="" src="${ctx }/survey!answerTD.action?surveyId=${survey.id}" height="130" >
+									<img alt="" src="${ctx }/survey!answerTD?surveyId=${survey.id}" height="130" >
 								</div>
 								<div class="scmcRightTopRight" style="float: left ;padding-left: 30px;">
-									<a href="${ctx }/survey!answerTD.action?surveyId=${survey.id}&down" class="sbtn25 sbtn25_1">下载二维码</a>
+									<a href="${ctx }/survey!answerTD?surveyId=${survey.id}&down" class="sbtn25 sbtn25_1">下载二维码</a>
 									<div class="scmcRightTopLeftNote" style="width: 100px;padding-top: 25px;">复制下面的问卷链接到QQ，Email等工具中直接发给被用户</div>
 								</div>
 								</div>

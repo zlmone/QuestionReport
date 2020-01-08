@@ -1052,7 +1052,7 @@ label.error{
 <input type="hidden" id="surveyStyleId" value="${surveyStyle.id }">
 <input type="hidden" id="prevHost" value="${ctx }">
 
-<form id="surveyForm" action="${ctx }/response!save.action" method="post" >
+<form id="surveyForm" action="${ctx }/response!save" method="post" >
 <input type="hidden" id="surveyId" name="surveyId" value="${survey.id }">
 <input type="hidden" id="sid" name="sid" value="${survey.sid }">
 <input type="hidden" id="e_uid" name="e_uid" value="${e_uid} ">
@@ -1835,7 +1835,7 @@ label.error{
 										<div class="frm_controls">
 											<span class="auth-code" id="verifycodeImgArea">
 											<input name="jcaptchaInput" type="text" class="" style="width:100px;" autocomplete="off">
-											<img id="register-jcaptchaImg" onclick="refreshAutoCode('register-jcaptchaImg')" src="${ctx }/jcaptcha.action" alt="验证码" height="40"></span>
+											<img id="register-jcaptchaImg" onclick="refreshAutoCode('register-jcaptchaImg')" src="${ctx }/jcaptcha" alt="验证码" height="40"></span>
 											<a href="javascript:refreshAutoCode('register-jcaptchaImg');" style="margin-left: 5px;" hidefocus="true">换一张</a>
 											<span class="frm_desc">输入下面图片的字符，区分大小写</span>
 											<p class="valid-msg fail" style="display: none;"><i>●</i><span class="msg_content">验证码错误，请重新输入</span></p>
@@ -1843,14 +1843,14 @@ label.error{
 									</div>
 									<div class="errorItem" style="display: none;"><label for="" class="error">验证码错误，请重新输入！</label></div>
 									<%-- 验证码：<input type="text" size="8" name="jcaptchaInput">
-									&nbsp;<img id="jcaptchaImg" alt="点击刷新" src="${ctx }/jcaptcha.action"  align="top">
+									&nbsp;<img id="jcaptchaImg" alt="点击刷新" src="${ctx }/jcaptcha"  align="top">
 									&nbsp;点击图片刷新 --%>
 								</div>
 								<input type="hidden" class="quType" value="submitSurveyBtn">
 								<div class="surveyQuItemContent" style="padding-top: 12px;height: 30px;min-height: 30px;">
 									<a href="#" id="submitSurvey" class="sbtn24 sbtn24_0 submitSurvey" >提&nbsp;交</a>&nbsp;&nbsp;
 									&nbsp;&nbsp;
-									<%-- <a href="${ctx }/report.action?sid=${survey.sid}" style="color: gray;text-decoration: none;" target="_blank">查看结果</a> --%>
+									<%-- <a href="${ctx }/report?sid=${survey.sid}" style="color: gray;text-decoration: none;" target="_blank">查看结果</a> --%>
 									<c:if test="${pageNo > 1 }">
 									<a href="#" class="sbtn24 sbtn24_1 prevPage_a">上一页</a>
 									<input type="hidden" name="prevPageNo" value="${pageNo-1 }">
@@ -1892,11 +1892,11 @@ $("#resultProgress").progressbar({value: bfbFloat,orientation: "vertical"});
 
 function refreshAutoCode(codeImgId){
 	var ctx=$("#ctx").val();
-	$("#"+codeImgId).attr("src",ctx+"/jcaptcha.action");
+	$("#"+codeImgId).attr("src",ctx+"/jcaptcha");
 }
 
 //判则判断 
-var url="${ctx}/response!ajaxCheckSurvey.action";
+var url="${ctx}/response!ajaxCheckSurvey";
 var data="surveyId=${survey.id}";
 $.ajax({
 	url:url,
@@ -1929,7 +1929,7 @@ if(errorcode=="3"){
 <!-- Diaowen.net Button BEGIN -->
 	<div id="webSiteFixedRight" class="websiteFixed" style="position: fixed;right: 0px;top: 20px;z-index: 9999;">
 		<a id="mobileTdId" href="＃" style="background: #1C658B;width: 15px;background: #8CBCD1;display: block;padding: 5px;padding-top: 10px;padding-bottom:10px;font-weight: bold;color: white;cursor: pointer;float: right;vertical-align: middle;text-decoration: none;font-size: 12px;">手机地址</a>
-		<img alt="" src="${ctx }/survey!answerTD.action?surveyId=${survey.id}" height="130" style="padding: 10px;background: white;display: none;" />
+		<img alt="" src="${ctx }/survey!answerTD?surveyId=${survey.id}" height="130" style="padding: 10px;background: white;display: none;" />
 	</div>
 <!-- Diaowen.net Button END -->
 

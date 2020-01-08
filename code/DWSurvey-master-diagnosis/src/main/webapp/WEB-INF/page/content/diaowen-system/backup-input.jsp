@@ -14,7 +14,7 @@ $(document).ready(function(){
 		rules:{
 			backupName:{
 				required:true,
-				remote:'${ctx}/sy/yb/yang-ben!checkEmailUn.action'
+				remote:'${ctx}/sy/yb/yang-ben!checkEmailUn'
 			}
 		},
 		errorPlacement: function(error, element) {
@@ -33,7 +33,7 @@ $(document).ready(function(){
 <body>
 	<div class="dailogFrame">
 		<div>
-			<form id="inputForm" action="${ctx }/sy/system/sys-backup!save.action" method="post" >
+			<form id="inputForm" action="${ctx }/sy/system/sys-backup!save" method="post" >
 			<input type="hidden" name="id" value="${id }" />
 			<table class="fromTable">
 				<tr>

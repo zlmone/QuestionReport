@@ -34,16 +34,16 @@
 			<div class="m-content-right" style="width:100%;">
 					<div class="m-content-right-body">
 						<div class="rightbody-tools">
-								<a href="${ctx }/sy/system/nosm/sys-email!input.action" class="btn001 click_a" title="新建文件夹">+&nbsp;新SMTP服务器</a>&nbsp;&nbsp;
+								<a href="${ctx }/sy/system/nosm/sys-email!input" class="btn001 click_a" title="新建文件夹">+&nbsp;新SMTP服务器</a>&nbsp;&nbsp;
 						</div>
 						
-						<form id="listForm" action="${ctx }/sy/ugroup/user-group.action?page.pageNo=${page.pageNo }" method="post">
+						<form id="listForm" action="${ctx }/sy/ugroup/user-group?page.pageNo=${page.pageNo }" method="post">
 						<div class="content-list">
 							<ul class="catalog_path">
-			            		<li><a href="${ctx }/sy/user/survey-directory.action">全部</a></li>
+			            		<li><a href="${ctx }/sy/user/survey-directory">全部</a></li>
 			            	<c:forEach items="${paths }" var="en">
 			            		<li><span class="catalogsplit_span">&gt;</span>
-			            			<a href="${ctx }/sy/user/${en.dirType eq 1?'survey-directory':'survey-question' }.action?parentId=${en.id}">${en.surveyName }</a>
+			            			<a href="${ctx }/sy/user/${en.dirType eq 1?'survey-directory':'survey-question' }?parentId=${en.id}">${en.surveyName }</a>
 			            		</li>
 			            	</c:forEach>
 			            	</ul>
@@ -58,7 +58,7 @@
 								<tr>
 									<td align="left"><input type="checkbox" name="trId" value="${en.id }" /></td>
 									<td align="left">${en.stmpUser }</td>
-									<td align="left"><span class="hoverShow"><a href="${ctx }/sy/system/nosm/sys-email!input.action?id=${en.id}" class="click_a">编辑</a></span></td>
+									<td align="left"><span class="hoverShow"><a href="${ctx }/sy/system/nosm/sys-email!input?id=${en.id}" class="click_a">编辑</a></span></td>
 									<td><fmt:formatDate value="${en.createDate }" pattern="yyyy-MM-dd HH:mm"/> </td>
 								</tr>
 								</c:forEach>
@@ -67,28 +67,28 @@
 							<div class="contentlistPage">
 								<!-- <a href="" class="btn001 disabled">&lt;</a> -->
 								<c:if test="${page.pageNo > 1}">
-									<a href="${ctx }/sy/ugroup/user-group.action?page.pageNo=${page.pageNo-1}" class="btn04 pageNoA">&lt;</a>
+									<a href="${ctx }/sy/ugroup/user-group?page.pageNo=${page.pageNo-1}" class="btn04 pageNoA">&lt;</a>
 								</c:if>
 								<c:if test="${page.startpage > 1}">
-									<a href="${ctx }/sy/ugroup/user-group.action?page.pageNo=1" class="btn04 pageNoA">1</a>
+									<a href="${ctx }/sy/ugroup/user-group?page.pageNo=1" class="btn04 pageNoA">1</a>
 									<c:if test="${page.startpage > 2 }">
 										<span>...</span>
 									</c:if>
 								</c:if>
 								<c:forEach begin="${page.startpage }" end="${page.endpage }" var="en">
 									<c:choose>
-										<c:when test="${page.pageNo eq en }"><a href="${ctx }/sy/ugroup/user-group.action?page.pageNo=${en }" class="btn04 focus pageNoA">${en }</a></c:when>
-										<c:otherwise><a href="${ctx }/sy/ugroup/user-group.action?page.pageNo=${en}" class="btn04 pageNoA">${en }</a></c:otherwise>
+										<c:when test="${page.pageNo eq en }"><a href="${ctx }/sy/ugroup/user-group?page.pageNo=${en }" class="btn04 focus pageNoA">${en }</a></c:when>
+										<c:otherwise><a href="${ctx }/sy/ugroup/user-group?page.pageNo=${en}" class="btn04 pageNoA">${en }</a></c:otherwise>
 									</c:choose>
 								</c:forEach>
 								<c:if test="${page.totalPage > (page.endpage)}">
 									<c:if test="${page.totalPage > (page.endpage+1)}">
 										<span>...</span>
 									</c:if>
-									<a href="${ctx }/sy/ugroup/user-group.action?page.pageNo=${page.totalPage}" class="btn04 pageNoA">${page.totalPage }</a>
+									<a href="${ctx }/sy/ugroup/user-group?page.pageNo=${page.totalPage}" class="btn04 pageNoA">${page.totalPage }</a>
 								</c:if>
 								<c:if test="${page.totalPage > page.pageNo}">
-									<a href="${ctx }/sy/ugroup/user-group.action?page.pageNo=${page.pageNo+1}" class="btn04 pageNoA">&gt;</a>
+									<a href="${ctx }/sy/ugroup/user-group?page.pageNo=${page.pageNo+1}" class="btn04 pageNoA">&gt;</a>
 								</c:if>
 							</div>
 						</div>

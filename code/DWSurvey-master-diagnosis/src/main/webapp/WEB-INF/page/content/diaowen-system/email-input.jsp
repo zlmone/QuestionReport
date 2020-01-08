@@ -18,9 +18,9 @@ $(document).ready(function(){
 			sendEmail:{
 				required:true,
 				email:true,
-				//remote:'${ctx}/sy/yb/yang-ben!checkEmailUn.action'
+				//remote:'${ctx}/sy/yb/yang-ben!checkEmailUn'
 				remote:{
-						url: "${ctx}/sy/yb/yang-ben!checkEmailUn.action",     //后台处理程序
+						url: "${ctx}/sy/yb/yang-ben!checkEmailUn",     //后台处理程序
 						type: "post",  //数据发送方式
 						data: {   //要传递的数据
 							sendEmail: function() { return $("input[name='sendEmail']").val(); },
@@ -45,7 +45,7 @@ $(document).ready(function(){
 <body>
 	<div class="dailogFrame">
 		<div>
-			<form id="inputForm" action="${ctx }/sy/system/sys-email!save.action" method="post" >
+			<form id="inputForm" action="${ctx }/sy/system/sys-email!save" method="post" >
 			<input type="hidden" name="id" value="${id }" />
 			<input type="hidden" name="dirType" value="2" />
 			<input type="hidden" name="parentId" value="${parentId }" />

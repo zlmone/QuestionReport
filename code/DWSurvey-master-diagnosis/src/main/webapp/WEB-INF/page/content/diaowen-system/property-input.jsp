@@ -70,20 +70,20 @@ $(document).ready(function(){
 		<div id="dwBodyUser">
 			<div class="surveyCollectMiddle">
 				
-				<form id="inputForm" action="${ctx }/sy/system/sys-property!save.action" method="post" >
+				<form id="inputForm" action="${ctx }/sy/system/sys-property!save" method="post" >
 				<div class="surveyCollectMiddleContent">
 					<div style="padding: 25px 45px;overflow: auto;padding-top: 12px;">
 							
 							<div style="padding: 5px;color: #666565;letter-spacing: 2px;font-size: 18px;">
 								系统设置
 							<%--&nbsp;&nbsp;|&nbsp;&nbsp;
-							 <a href="${ctx }/sy/user/nosm/user-admin!input.action" class="a-style-1" title="新用户">新账号</a> --%>
-								<%-- <a href="${ctx }/sy/user/user-admin.action" class="a-style-1" title="新用户">邮件设置</a> --%>
-								<%-- <a href="${ctx }/sy/user/user-admin.action" class="a-style-1" title="新用户">数据备份</a>
+							 <a href="${ctx }/sy/user/nosm/user-admin!input" class="a-style-1" title="新用户">新账号</a> --%>
+								<%-- <a href="${ctx }/sy/user/user-admin" class="a-style-1" title="新用户">邮件设置</a> --%>
+								<%-- <a href="${ctx }/sy/user/user-admin" class="a-style-1" title="新用户">数据备份</a>
 								&nbsp;&nbsp;|&nbsp;&nbsp; --%>
-								<%-- <a href="${ctx }/sy/user/user-admin.action" class="a-style-1" title="新用户">系统日志</a>
+								<%-- <a href="${ctx }/sy/user/user-admin" class="a-style-1" title="新用户">系统日志</a>
 								&nbsp;&nbsp;|&nbsp;&nbsp;
-								<a href="${ctx }/sy/user/user-admin.action" class="a-style-1" title="新用户">激活</a> --%>
+								<a href="${ctx }/sy/user/user-admin" class="a-style-1" title="新用户">激活</a> --%>
 							</div>
 							
 							<div style="padding: 5px;color:#666565;border: 1px solid #DFDFDF;border-radius: 5px;margin-top: 15px;">

@@ -24,7 +24,7 @@
 $(document).ready(function(){
 	
 	$("#confirgDevSuvey").click(function(){
-		window.location.href="${ctx}/design/my-survey-design!devSurvey.action?surveyId=${param['surveyId']}";
+		window.location.href="${ctx}/design/my-survey-design!devSurvey?surveyId=${param['surveyId']}";
 	});
 	
 	$("#preview_head .leftTabbar ul li").hover(function(){
@@ -163,7 +163,7 @@ $(document).ready(function(){
 	});
 	
 	$("#saveStyleDev").click(function(){
-		var url="${ctx}/design/my-survey-style!save.action";
+		var url="${ctx}/design/my-survey-style!save";
 		var surveyId=$("#id").val();
 		var bodyBgColor=$("input[name='bodyBgColor']").val();
 		var bodyBgImage=$("input[name='bodyBgImage']").val();
@@ -403,7 +403,7 @@ $(document).ready(function(){
 		var styleModelId=$(this).find(".styleModelId").val();
 		//alert(styleModelId);
 		//应用模板样式
-		var url="${ctx}/design/my-survey-style!ajaxGetStyle.action";
+		var url="${ctx}/design/my-survey-style!ajaxGetStyle";
 		var data="id="+styleModelId;
 		$.ajax({
 			url:url,
@@ -978,7 +978,7 @@ $(document).ready(function(){
 	<div class="rightTabbar" style="display: none;">
 		<a id="confirgDevSuvey" href="#" class="sbtn24 sbtn24_0">确认发布</a>
 		<a href="#" class="sbtn24 sbtn24_0" id="saveStyleDev">保　存</a>
-		<a href="${ctx }/design/my-survey-design.action?surveyId=${survey.id}" class="sbtn24 sbtn24_1">返回修改</a>
+		<a href="${ctx }/design/my-survey-design?surveyId=${survey.id}" class="sbtn24 sbtn24_1">返回修改</a>
 	</div>
 	<div style="clear: both;"></div>
 	<!-- <div class="centerTabbar">
@@ -1815,7 +1815,7 @@ $(document).ready(function(){
 </div>
 
 <!-- <div id="dwPad">
-	<iframe name="PhoneSurvey" frameborder="0" scrolling="" src="http://localhost:8080/survey!answerSurveryMobile.action?surveyId=402880e4480248300148024b65960000" class="uploadfile" id="PhoneSurvey" style="width:255px;height:455px;margin:96px 0 0 67px;"></iframe>
+	<iframe name="PhoneSurvey" frameborder="0" scrolling="" src="http://localhost:8080/survey!answerSurveryMobile?surveyId=402880e4480248300148024b65960000" class="uploadfile" id="PhoneSurvey" style="width:255px;height:455px;margin:96px 0 0 67px;"></iframe>
 </div> -->
 
 
@@ -1823,7 +1823,7 @@ $(document).ready(function(){
 <script type="text/javascript">
 //$("#dw_body").hide();
 $("#dwPhone").hide();
-$("#PhoneSurvey").attr("src","${ctx}/survey!answerSurveryMobile.action?surveyId=${survey.id}");
+$("#PhoneSurvey").attr("src","${ctx}/survey!answerSurveryMobile?surveyId=${survey.id}");
 $(".centerTabbarBtn").click(function(){
 	$(".centerTabbarBtn").removeClass("active");
 	$(this).addClass("active");

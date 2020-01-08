@@ -121,7 +121,7 @@ $(document).ready(function(){
 </style>
 </head>
 <body>
-<form id="surveyForm" action="${ctx }/response!saveMobile.action" method="post" data-ajax="false">
+<form id="surveyForm" action="${ctx }/response!saveMobile" method="post" data-ajax="false">
 <input type="hidden" id="surveyId" name="surveyId" value="${survey.id }">
 <input type="hidden" name="form-from" value="mobile" >
 <input type="hidden" id="e_uid" name="e_uid" value="${e_uid} ">
@@ -804,7 +804,7 @@ $(document).ready(function(){
 										<div class="frm_controls">
 											<span class="auth-code" id="verifycodeImgArea">
 											<input name="jcaptchaInput" type="text" class="" style="" autocomplete="off">
-											<img id="register-jcaptchaImg" onclick="refreshAutoCode('register-jcaptchaImg')" src="${ctx }/jcaptcha.action" alt="验证码" height="40"></span>
+											<img id="register-jcaptchaImg" onclick="refreshAutoCode('register-jcaptchaImg')" src="${ctx }/jcaptcha" alt="验证码" height="40"></span>
 											<a href="javascript:refreshAutoCode('register-jcaptchaImg');" style="margin-left: 5px;" hidefocus="true">换一张</a>
 											<span class="frm_desc">验证码，区分大小写</span>
 											<p class="valid-msg fail" style="display: none;"><i>●</i><span class="msg_content">验证码错误，请重新输入</span></p>
@@ -812,7 +812,7 @@ $(document).ready(function(){
 									</div>
 									<div class="errorItem" style="display: none;"><label for="" class="error">验证码错误，请重新输入！</label></div>
 									<%-- 验证码：<input type="text" size="8" name="jcaptchaInput">
-									&nbsp;<img id="jcaptchaImg" alt="点击刷新" src="${ctx }/jcaptcha.action"  align="top">
+									&nbsp;<img id="jcaptchaImg" alt="点击刷新" src="${ctx }/jcaptcha"  align="top">
 									&nbsp;点击图片刷新 --%>
 								</div>
 								
@@ -1466,11 +1466,11 @@ function skQuestion(nextQuItemBody,skQuId,logicId,callback){
 
 
 function refreshAutoCode(codeImgId){
-	$("#"+codeImgId).attr("src","${ctx}/jcaptcha.action");
+	$("#"+codeImgId).attr("src","${ctx}/jcaptcha");
 }
 
 //判则判断 
-var url="${ctx}/response!ajaxCheckSurvey.action";
+var url="${ctx}/response!ajaxCheckSurvey";
 var data="surveyId=${survey.id}";
 $.ajax({
 	url:url,

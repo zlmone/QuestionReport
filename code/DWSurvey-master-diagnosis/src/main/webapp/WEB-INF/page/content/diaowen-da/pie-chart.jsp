@@ -218,31 +218,31 @@ function substring(json) {
 		                	<div class="selc">
 		                    	<div class="selcc tbtag">
 		                            <div class="seli"><a class="nx-1 sur_collectSet" href="#collectSet">收集规则</a></div>
-		                            <div class="seli"><a class="nx-2" href="${ctx }/design/my-survey-design!previewDev.action?surveyId=${surveyId}">样式设置</a></div>
-		                            <div class="seli"><a class="nx-6 sur_edit" href="${ctx }/design/my-survey-design.action?surveyId=${surveyId}">问卷编辑</a></div>
+		                            <div class="seli"><a class="nx-2" href="${ctx }/design/my-survey-design!previewDev?surveyId=${surveyId}">样式设置</a></div>
+		                            <div class="seli"><a class="nx-6 sur_edit" href="${ctx }/design/my-survey-design?surveyId=${surveyId}">问卷编辑</a></div>
 		                        </div>
 		                    </div>
 		                </div>
 		            </div>
 				</li>
 				<li><span class="csscStep csscStepLine"><span class="csscStepLeft">&nbsp;</span><span class="csscStepRight">&nbsp;</span></span></li>
-				<li><a href="${ctx }/design/my-collect.action?surveyId=${surveyId }"  class="clickHideMenu csscStep csscStep5"><span class="csscStepLeft">&nbsp;</span><span class="csscStepCenter">数据收集</span><span class="csscStepRight" >&nbsp;</span></a>
+				<li><a href="${ctx }/design/my-collect?surveyId=${surveyId }"  class="clickHideMenu csscStep csscStep5"><span class="csscStepLeft">&nbsp;</span><span class="csscStepCenter">数据收集</span><span class="csscStepRight" >&nbsp;</span></a>
 					<div class="a-w-sel">
 		            	<div class="w-sel" style="margin-top: 4px;">
 		                	<div class="selc">
 		                    	<div class="selcc tbtag">
-		                            <div class="seli"><a class="nx-1" href="${ctx }/design/my-collect.action?surveyId=${surveyId}">答卷地址</a></div>
+		                            <div class="seli"><a class="nx-1" href="${ctx }/design/my-collect?surveyId=${surveyId}">答卷地址</a></div>
 		                            <div class="seli"><a class="nx-2" href="">社交分享</a></div>
-		                            <div class="seli"><a class="nx-3" href="${ctx }/design/my-collect.action?surveyId=${surveyId}&tabId=mail">邮件邀请</a></div>
-		                            <div class="seli"><a class="nx-3" href="${ctx }/design/my-collect.action?surveyId=${surveyId}&tabId=sitecomp">网站组件</a></div>
-		                            <div class="seli"><a class="nx-3" href="${ctx }/design/my-collect.action?surveyId=${surveyId}&tabId=weixin">微信收集</a></div>
+		                            <div class="seli"><a class="nx-3" href="${ctx }/design/my-collect?surveyId=${surveyId}&tabId=mail">邮件邀请</a></div>
+		                            <div class="seli"><a class="nx-3" href="${ctx }/design/my-collect?surveyId=${surveyId}&tabId=sitecomp">网站组件</a></div>
+		                            <div class="seli"><a class="nx-3" href="${ctx }/design/my-collect?surveyId=${surveyId}&tabId=weixin">微信收集</a></div>
 		                        </div>
 		                    </div>
 		                </div>
 		            </div>
 				</li>
 				<li><span class="csscStep csscStepLine"><span class="csscStepLeft">&nbsp;</span><span class="csscStepRight">&nbsp;</span></span></li>
-				<li><a href="${ctx }/da/survey-report!defaultReport.action?surveyId=${surveyId}"  class="clickHideMenu csscStep csscStep6 active"><span class="csscStepLeft">&nbsp;</span><span class="csscStepCenter">数据分析</span><span class="csscStepRight">&nbsp;</span></a>
+				<li><a href="${ctx }/da/survey-report!defaultReport?surveyId=${surveyId}"  class="clickHideMenu csscStep csscStep6 active"><span class="csscStepLeft">&nbsp;</span><span class="csscStepCenter">数据分析</span><span class="csscStepRight">&nbsp;</span></a>
 				</li>
 			</ul>
 		</div>
@@ -252,8 +252,8 @@ function substring(json) {
 		<div class="main-tabs-content bodyCenter">
 			<div class="tab-content">
 				<div class="tab-content-collectTab">
-					<a href="${ctx }/design/my-collect.action?surveyId=${surveyId}" class="collectTab tabItem_1 active"><span class="collectTabItemLeft">&nbsp;</span><span>默认报告</span></a>
-					<a href="${ctx }/da/my-survey-answer.action?surveyId=${surveyId}" class="collectTab tabItem_3"><span class="collectTabItemLeft">&nbsp;</span><span>原始数据</span></a>
+					<a href="${ctx }/design/my-collect?surveyId=${surveyId}" class="collectTab tabItem_1 active"><span class="collectTabItemLeft">&nbsp;</span><span>默认报告</span></a>
+					<a href="${ctx }/da/my-survey-answer?surveyId=${surveyId}" class="collectTab tabItem_3"><span class="collectTabItemLeft">&nbsp;</span><span>原始数据</span></a>
 					<a href="#" class="collectTab tabItem_3" style="display: none;"><span class="collectTabItemLeft">&nbsp;</span><span>问卷日志</span></a>
 				</div>
 			</div>
@@ -288,7 +288,7 @@ function substring(json) {
 					<div style="padding: 15px 25px;overflow: auto;">
 							<div style="overflow: auto;">
 								<div style="float: left;" >
-									<a href="${ctx }/da/survey-report!defaultReport.action?surveyId=${surveyId }" class="dw_btn025 tabpic"><i class="fa fa-tasks"></i>&nbsp;表格</a>
+									<a href="${ctx }/da/survey-report!defaultReport?surveyId=${surveyId }" class="dw_btn025 tabpic"><i class="fa fa-tasks"></i>&nbsp;表格</a>
 								<div style="float: right;" >
 									<a href="" class="dw_btn025"><i class="fa fa-download"></i>下载报告</a>
 									<a href="" class="dw_btn025"><i class="fa fa-share"></i>分享</a></div>

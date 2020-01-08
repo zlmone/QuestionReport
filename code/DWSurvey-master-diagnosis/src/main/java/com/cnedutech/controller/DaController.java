@@ -11,9 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.key.common.base.entity.User;
 import com.key.common.base.service.AccountManager;
+import com.key.common.plugs.page.Page;
 import com.key.dwsurvey.entity.Question;
+import com.key.dwsurvey.entity.SurveyAnswer;
 import com.key.dwsurvey.entity.SurveyDirectory;
 import com.key.dwsurvey.entity.SurveyStats;
+import com.key.dwsurvey.service.SurveyAnswerManager;
 import com.key.dwsurvey.service.SurveyDirectoryManager;
 import com.key.dwsurvey.service.SurveyStatsManager;
 
@@ -27,6 +30,8 @@ public class DaController {
 	private SurveyDirectoryManager directoryManager;
 	@Autowired
 	private AccountManager accountManager;
+	@Autowired
+	private SurveyAnswerManager surveyAnswerManager;
 	
 	@RequestMapping(value="/survey-report!defaultReport")
 	public ModelAndView defaultReport(HttpServletRequest request) throws Exception {
@@ -44,6 +49,24 @@ public class DaController {
 			}
 		}
 		modelAndView.addObject(surveyStats);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/my-survey-answer")
+	public ModelAndView mySurveyAnswer(HttpServletRequest request) {
+		ModelAndView modelAndView = new  ModelAndView("content/diaowen-da/survey-answer-data");
+		Page<SurveyAnswer> page=new Page<SurveyAnswer>();
+		page.setPageNo(Integer.valueOf(request.getParameter("page.pageNo")));
+		User user=accountManager.getCurUser();
+		String surveyId = request.getParameter("surveyId");
+    	if(user!=null){
+    		SurveyDirectory survey=directoryManager.getSurveyByUser(surveyId, user.getId());
+    		if(survey!=null){
+    			page=surveyAnswerManager.answerPage(page, surveyId);
+    			modelAndView.addObject("survey", survey);
+    			modelAndView.addObject("page", page);
+    		}
+    	}
 		return modelAndView;
 	}
 }

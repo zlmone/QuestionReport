@@ -77,7 +77,7 @@ $(document).ready(function(){
 							<div style="padding: 5px;color: #666565;letter-spacing: 2px;font-size: 18px;">账号</div>
 							
 							<div class="contacts_search" style="padding: 5px;color:#666565;margin-top: 15px;" >
-								<form action="${ctx }/sy/user/user-admin.action" method="post">
+								<form action="${ctx }/sy/user/user-admin" method="post">
 								<div style="padding-left: 30px;padding-top: 8px;padding-bottom: 8px;">
 										<span style="font-size: 14px;vertical-align: middle;">状态&nbsp;</span>
 										<select name="status" style="vertical-align: middle;">
@@ -90,7 +90,7 @@ $(document).ready(function(){
 									<input type="submit" value="查询" class="sbtn25 sbtn25_1" style="font-size: 16px;"/>
 									
 									<div style="padding: 5px;color: #666565;text-align: right;float: right;margin-right: 20px;">
-										<a href="${ctx }/sy/user/user-admin!input.action" class="user-plus active"><i class="fa fa-plus " aria-hidden="true"></i>&nbsp;添加账号</a>
+										<a href="${ctx }/sy/user/user-admin!input" class="user-plus active"><i class="fa fa-plus " aria-hidden="true"></i>&nbsp;添加账号</a>
 									</div>
 								</div>
 								</form>
@@ -124,8 +124,8 @@ $(document).ready(function(){
 														<td align="left"><fmt:formatDate value="${en.createTime }" pattern="yyyy年MM月dd日 HH:mm"/></td>
 														<td align="left">${en.status eq 0 ? '不可用':'可用' }</td>
 														<td align="center">
-															<a class="btn btn-default" href="${ctx }/sy/user/nosm/user-admin!input.action?id=${en.id}" title="编辑"data-toggle="tooltip" data-placement="top" ><i class="fa fa-pencil-square-o"></i></a>
-															<a class="btn btn-default disUser_a" href="${ctx }/sy/user/nosm/user-admin!delete.action?id=${en.id}" title="禁用"data-toggle="tooltip" data-placement="top" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+															<a class="btn btn-default" href="${ctx }/sy/user/nosm/user-admin!input?id=${en.id}" title="编辑"data-toggle="tooltip" data-placement="top" ><i class="fa fa-pencil-square-o"></i></a>
+															<a class="btn btn-default disUser_a" href="${ctx }/sy/user/nosm/user-admin!delete?id=${en.id}" title="禁用"data-toggle="tooltip" data-placement="top" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 														</td>
 													</tr>
 												</c:forEach>
@@ -147,28 +147,28 @@ $(document).ready(function(){
 								<div style="padding-top: 15px;text-align: center;">
 									<div class="btn-group">
 										<c:if test="${page.pageNo > 1}">
-											<a href="${ctx }/sy/user/user-admin.action?page.pageNo=${page.pageNo-1}" class="btn btn-default">&lt;</a>
+											<a href="${ctx }/sy/user/user-admin?page.pageNo=${page.pageNo-1}" class="btn btn-default">&lt;</a>
 										</c:if>
 										<c:if test="${page.startpage > 1}">
-											<a href="${ctx }/sy/user/user-admin.action?page.pageNo=1" class="btn btn-default">1</a>
+											<a href="${ctx }/sy/user/user-admin?page.pageNo=1" class="btn btn-default">1</a>
 											<c:if test="${page.startpage > 2 }">
 												<span>...</span>
 											</c:if>
 										</c:if>
 										<c:forEach begin="${page.startpage }" end="${page.endpage }" var="en">
 											<c:choose>
-												<c:when test="${page.pageNo eq en }"><a href="${ctx }/sy/user/user-admin.action?page.pageNo=${en }" class="btn btn-default" style="background: #D3DEED;">${en }</a></c:when>
-												<c:otherwise><a href="${ctx }/sy/user/user-admin.action?page.pageNo=${en}" class="btn btn-default">${en }</a></c:otherwise>
+												<c:when test="${page.pageNo eq en }"><a href="${ctx }/sy/user/user-admin?page.pageNo=${en }" class="btn btn-default" style="background: #D3DEED;">${en }</a></c:when>
+												<c:otherwise><a href="${ctx }/sy/user/user-admin?page.pageNo=${en}" class="btn btn-default">${en }</a></c:otherwise>
 											</c:choose>
 										</c:forEach>
 										<c:if test="${page.totalPage > (page.endpage)}">
 											<c:if test="${page.totalPage > (page.endpage+1)}">
 												<span>...</span>
 											</c:if>
-											<a href="${ctx }/sy/user/user-admin.action?page.pageNo=${page.totalPage}" class="btn btn-default">${page.totalPage }</a>
+											<a href="${ctx }/sy/user/user-admin?page.pageNo=${page.totalPage}" class="btn btn-default">${page.totalPage }</a>
 										</c:if>
 										<c:if test="${page.totalPage > page.pageNo}">
-											<a href="${ctx }/sy/user/user-admin.action?page.pageNo=${page.pageNo+1}" class="btn btn-default">&gt;</a>
+											<a href="${ctx }/sy/user/user-admin?page.pageNo=${page.pageNo+1}" class="btn btn-default">&gt;</a>
 										</c:if>
 									</div>
 								</div>

@@ -19,7 +19,7 @@ $(document).ready(function(){
 			loginName:{
 				required:true,
 				remote:{
-					url: "${ctx}/sy/user/user-admin!checkLoginNamelUn.action",     //后台处理程序
+					url: "${ctx}/sy/user/user-admin!checkLoginNamelUn",     //后台处理程序
 					type: "post",  //数据发送方式
 					data: {   //要传递的数据
 						loginName: function() { return $("input[name='loginName']").val(); },
@@ -30,9 +30,9 @@ $(document).ready(function(){
 			email:{
 				required:true,
 				email:true,
-				//remote:'${ctx}/sy/yb/yang-ben!checkEmailUn.action'
+				//remote:'${ctx}/sy/yb/yang-ben!checkEmailUn'
 				remote:{
-						url: "${ctx}/sy/user/user-admin!checkEmailUn.action",     //后台处理程序
+						url: "${ctx}/sy/user/user-admin!checkEmailUn",     //后台处理程序
 						type: "post",  //数据发送方式
 						data: {   //要传递的数据
 							email: function() { return $("input[name='email']").val(); },
@@ -81,7 +81,7 @@ $(document).ready(function(){
 		<div id="dwBodyUser">
 			<div class="surveyCollectMiddle">
 				
-				<form id="inputForm" action="${ctx }/sy/user/nosm/user-admin!save.action" method="post" >
+				<form id="inputForm" action="${ctx }/sy/user/nosm/user-admin!save" method="post" >
 				<input type="hidden" name="id" value="${id }" >
 				<div class="surveyCollectMiddleContent">
 					<div style="padding: 25px 45px;overflow: auto;padding-top: 35px;">
