@@ -115,7 +115,7 @@ public class MySurveryController {
 		Map<String,String> url = new HashMap<String,String>();
 		url.put(COLLECT1, "content/diaowen-collect/collect_1");
 		url.put(IFRAME, "content/diaowen-collect/collect_iframe");
-		url.put(SITECOMP, "diaowen-collect/collect_website");
+		url.put(SITECOMP, "content/diaowen-collect/collect_website");
 		url.put(WEIXIN, "content/diaowen-collect/collect_weixin");
 		url.put(SHARE, "content/diaowen-collect/collect_2");
 		
@@ -142,9 +142,12 @@ public class MySurveryController {
         				modelAndView=new  ModelAndView(url.get(tabId));
         			}else if(SHARE.equals(tabId)){
         				modelAndView=new  ModelAndView(url.get(tabId));
+        			}else {
+        				modelAndView=new  ModelAndView(url.get(COLLECT1));
         			}
-        			modelAndView=new  ModelAndView(url.get(SHARE));
+        			
         		}
+    			modelAndView.addObject("surveyId", surveyId);
     			modelAndView.addObject("baseUrl", baseUrl);
     			modelAndView.addObject("survey", surveyDirectory);
     			return modelAndView;

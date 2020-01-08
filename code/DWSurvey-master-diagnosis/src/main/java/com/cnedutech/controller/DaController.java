@@ -1,8 +1,10 @@
 package com.cnedutech.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.key.common.base.entity.User;
 import com.key.common.base.service.AccountManager;
 import com.key.common.plugs.page.Page;
+import com.key.common.utils.web.Struts2Utils;
 import com.key.dwsurvey.entity.Question;
 import com.key.dwsurvey.entity.SurveyAnswer;
 import com.key.dwsurvey.entity.SurveyDirectory;
@@ -48,6 +51,7 @@ public class DaController {
 				surveyStats.setQuestions(questions);
 			}
 		}
+		modelAndView.addObject("surveyId", surveyId);
 		modelAndView.addObject(surveyStats);
 		return modelAndView;
 	}
@@ -56,7 +60,11 @@ public class DaController {
 	public ModelAndView mySurveyAnswer(HttpServletRequest request) {
 		ModelAndView modelAndView = new  ModelAndView("content/diaowen-da/survey-answer-data");
 		Page<SurveyAnswer> page=new Page<SurveyAnswer>();
-		page.setPageNo(Integer.valueOf(request.getParameter("page.pageNo")));
+		int pageNo=0;
+		if(request.getParameter("page.pageNo")!=null) {
+			pageNo=Integer.valueOf(request.getParameter("page.pageNo"));
+		}
+		page.setPageNo(Integer.valueOf(pageNo));
 		User user=accountManager.getCurUser();
 		String surveyId = request.getParameter("surveyId");
     	if(user!=null){
@@ -67,6 +75,20 @@ public class DaController {
     			modelAndView.addObject("page", page);
     		}
     	}
+    	modelAndView.addObject("surveyId", surveyId);
 		return modelAndView;
+	}
+	@RequestMapping(value="/survey-report!chartData")
+	public String chartData(HttpServletRequest request,HttpServletResponse response) throws IOException {
+		//取柱状图数据
+		User user = accountManager.getCurUser();
+		if(user!=null){
+			String questionId=request.getParameter("quId");
+			Question question=new Question();
+			question.setId(questionId);
+			surveyStatsManager.questionDateCross(question);
+			response.getWriter().write(question.getStatJson());
+		}
+		return null;
 	}
 }

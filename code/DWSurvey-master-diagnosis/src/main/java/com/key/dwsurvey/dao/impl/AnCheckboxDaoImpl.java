@@ -205,6 +205,9 @@ public class AnCheckboxDaoImpl extends BaseDaoImpl<AnCheckbox, String> implement
 			DataCross dataCross=new DataCross();
 			dataCross.setOptionName(optionName);
 			for (Object[] objects : list) {
+				if(objects[0]==null) {
+					continue;
+				}
 				String anQuItemId=objects[0].toString();
 				int count=Integer.parseInt(objects[1].toString());
 				if(quItemId.equals(anQuItemId)){
