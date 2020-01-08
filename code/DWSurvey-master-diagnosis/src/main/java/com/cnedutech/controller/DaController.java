@@ -38,21 +38,23 @@ public class DaController {
 	
 	@RequestMapping(value="/survey-report!defaultReport")
 	public ModelAndView defaultReport(HttpServletRequest request) throws Exception {
-		SurveyDirectory directory = new SurveyDirectory();
 		SurveyStats surveyStats = new SurveyStats();
 		ModelAndView modelAndView  = new ModelAndView("content/diaowen-da/default-report");
 		String surveyId = request.getParameter("surveyId");
 		// 得到频数分析数据
 		User user = accountManager.getCurUser();
+		SurveyDirectory survey =null;
 		if(user!=null){
-			directory=directoryManager.getSurveyByUser(surveyId, user.getId());
-			if(directory!=null){
-				List<Question> questions = surveyStatsManager.findFrequency(directory);
+			survey=directoryManager.getSurveyByUser(surveyId, user.getId());
+			if(survey!=null){
+				List<Question> questions = surveyStatsManager.findFrequency(survey);
 				surveyStats.setQuestions(questions);
+				modelAndView.addObject(survey);
 			}
 		}
+		modelAndView.addObject("survey", survey);
 		modelAndView.addObject("surveyId", surveyId);
-		modelAndView.addObject(surveyStats);
+		modelAndView.addObject("surveyStats",surveyStats);
 		return modelAndView;
 	}
 	

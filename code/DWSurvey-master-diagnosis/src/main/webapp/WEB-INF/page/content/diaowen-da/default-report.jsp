@@ -828,7 +828,7 @@ function substring(json) {
 				
 				<div class="surveyCollectTop">
 					<div class="surveyCollectTitleDiv">
-						<span class="surveyCollectTitle">${directory.surveyName }</span>
+						<span class="surveyCollectTitle">${survey.surveyName }</span>
 						<div class="scmTabRight" >
 							<a href="" class="sbtn25 sbtn25_2">停止收集</a>
 						</div>
@@ -836,10 +836,10 @@ function substring(json) {
 					<div class="surveyCollectInfoDiv">
 						<span class="surveyCollectInfoLeft">
 						状态：<span class="collectInfoSpan">收集中</span>&nbsp;&nbsp;&nbsp;&nbsp;
-						参与人数：<span class="collectInfoSpan">${directory.answerNum }</span>
+						参与人数：<span class="collectInfoSpan">${survey.answerNum }</span>
 						</span>
 						<span class="surveyCollectInfoRight">
-						创建时间：<span class="collectInfoSpan"><fmt:formatDate value="${directory.createDate }" pattern="yyyy年MM月dd日 HH:mm"/></span>
+						创建时间：<span class="collectInfoSpan"><fmt:formatDate value="${survey.createDate }" pattern="yyyy年MM月dd日 HH:mm"/></span>
 						</span>
 					</div>
 				</div>

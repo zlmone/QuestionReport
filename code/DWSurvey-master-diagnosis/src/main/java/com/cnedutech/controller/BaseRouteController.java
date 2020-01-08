@@ -8,14 +8,34 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.key.common.plugs.ipaddr.IPService;
+import com.key.common.utils.DiaowenProperty;
 import com.key.common.utils.twodimension.TwoDimensionCode;
+import com.key.common.utils.web.Struts2Utils;
+import com.key.dwsurvey.entity.SurveyDirectory;
+import com.key.dwsurvey.entity.SurveyStyle;
+import com.key.dwsurvey.service.QuestionManager;
+import com.key.dwsurvey.service.SurveyAnswerManager;
+import com.key.dwsurvey.service.SurveyDirectoryManager;
+import com.key.dwsurvey.service.SurveyStyleManager;
 
 @Controller
 public class BaseRouteController {
-
+	@Autowired
+	private SurveyDirectoryManager surveyDirectoryManager;
+	@Autowired
+	private QuestionManager questionManager;
+	@Autowired
+	private SurveyStyleManager surveyStyleManager;
+	@Autowired
+	private IPService ipService;
+	@Autowired
+	private SurveyAnswerManager surveyAnswerManager;
 	
 	@RequestMapping("survey!answerTD")
 	public void answerTD(HttpServletRequest request,HttpServletResponse response) throws Exception {
@@ -52,6 +72,27 @@ public class BaseRouteController {
 			responseOutputStream.flush();
 			responseOutputStream.close();
 		}
+	}
+
+	
+	//问卷动态访问-移动端
+	@RequestMapping("survey!answerSurveryMobile")
+	public ModelAndView answerSurveryMobile(HttpServletRequest request) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("content/diaowen-design/answer-survey-mobile");
+		String surveyId = request.getParameter("surveyId");
+		SurveyDirectory survey=surveyDirectoryManager.getSurvey(surveyId);
+		buildSurvey(survey,surveyId,modelAndView);
+	    return modelAndView;
+	}
+	
+	private void buildSurvey(SurveyDirectory survey,String surveyId,ModelAndView modelAndView) {
+		if (survey==null)
+		survey=surveyDirectoryManager.getSurvey(surveyId);
+		survey.setQuestions(questionManager.findDetails(surveyId, "2"));
+		modelAndView.addObject("survey", survey);
+		SurveyStyle surveyStyle=surveyStyleManager.getBySurveyId(surveyId);
+		modelAndView.addObject("surveyStyle", surveyStyle);
+		modelAndView.addObject("prevHost", DiaowenProperty.STORAGE_URL_PREFIX);
 	}
 
 }

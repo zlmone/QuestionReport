@@ -17,6 +17,7 @@ import com.key.common.base.entity.User;
 import com.key.common.base.service.AccountManager;
 import com.key.common.plugs.page.Page;
 import com.key.common.utils.DiaowenProperty;
+import com.key.common.utils.web.Struts2Utils;
 import com.key.dwsurvey.entity.Question;
 import com.key.dwsurvey.entity.SurveyDirectory;
 import com.key.dwsurvey.entity.SurveyStyle;
@@ -157,4 +158,42 @@ public class MySurveryController {
 	}
 	
 	
+	/**
+	 * 我的问卷预览页面
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/my-survey-design!previewDev")
+	public ModelAndView previewDev(HttpServletRequest request) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("content/diaowen-design/survey_preview_dev");
+		String surveyId=request.getParameter("surveyId");
+		buildSurvey( surveyId, modelAndView);
+		return modelAndView;
+	}
+	
+	private void buildSurvey(String surveyId,ModelAndView modelAndView) {
+		//判断是否拥有权限
+		User user= accountManager.getCurUser();
+		if(user!=null){
+			String userId=user.getId();
+			SurveyDirectory surveyDirectory=surveyDirectoryManager.getSurveyByUser(surveyId, userId);
+			if(surveyDirectory!=null){
+				surveyDirectoryManager.getSurveyDetail(surveyId, surveyDirectory);
+				List<Question> questions=questionManager.findDetails(surveyId, "2");
+				surveyDirectory.setQuestions(questions);
+				surveyDirectory.setSurveyQuNum(questions.size());
+				surveyDirectoryManager.save(surveyDirectory);
+				modelAndView.addObject("survey", surveyDirectory);
+				SurveyStyle surveyStyle=surveyStyleManager.getBySurveyId(surveyId);
+				modelAndView.addObject("surveyStyle", surveyStyle);
+				
+				modelAndView.addObject("prevHost", DiaowenProperty.STORAGE_URL_PREFIX);
+			}else{
+				modelAndView.addObject("msg", "未登录或没有相应数据权限");
+			}
+		}else{
+			modelAndView.addObject("msg", "未登录或没有相应数据权限");
+		}
+	}
 }
