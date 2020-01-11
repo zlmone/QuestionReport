@@ -80,7 +80,7 @@
     </filter>
     <filter-mapping>
 		<filter-name>xssFilter</filter-name>
-		<url-pattern>*.action</url-pattern>
+		<url-pattern>*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>FORWARD</dispatcher>
 	</filter-mapping>
@@ -92,7 +92,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>hibernateOpenSessionInViewFilter</filter-name>
-		<url-pattern>*.action</url-pattern>
+		<url-pattern>*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>FORWARD</dispatcher>
 	</filter-mapping>
@@ -136,7 +136,7 @@
 		-->
 	
     
-	<filter>
+<!-- 	<filter>
 		<filter-name>struts2Filter</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
 		<init-param>
@@ -153,7 +153,7 @@
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>FORWARD</dispatcher>
 	</filter-mapping> 
-	
+	 -->
 	<listener>
 	   <listener-class>
 			org.springframework.web.util.Log4jConfigListener

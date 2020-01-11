@@ -22,11 +22,11 @@
 			<div class="header_Item header_menu">
 				<ul>
 					<%-- <li><a href="${ctx }/" >首页</a></li> --%>
-					<li><a href="${ctx }/design/my-survey.action" id="mysurvey">问卷</a></li>
+					<li><a href="${ctx }/design/my-survey" id="mysurvey">问卷</a></li>
 					<shiro:hasRole name="admin">
-						<li><a href="${ctx }/sy/user/user-admin.action"
+						<li><a href="${ctx }/sy/user/user-admin"
 							id="usermanager">用户</a></li>
-						<li><a href="${ctx }/sy/system/sys-property!input.action"
+						<li><a href="${ctx }/sy/system/sys-property!input"
 							id="systemset">设置</a></li>
 					</shiro:hasRole>
 				</ul>
@@ -42,10 +42,10 @@
 						<div class="selc">
 							<div class="selcc tbtag">
 								<div class="seli">
-									<a class="nx-1" href="${ctx }/ic/user!myaccount.action">修改密码</a>
+									<a class="nx-1" href="${ctx }/ic/user!myaccount">修改密码</a>
 								</div>
 								<div class="seli">
-									<a class="nx-8" href="${ctx }/login!logout.action">退出</a>
+									<a class="nx-8" href="${ctx }/login!logout">退出</a>
 								</div>
 							</div>
 						</div>

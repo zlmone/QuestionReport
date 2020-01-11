@@ -957,12 +957,12 @@ $(document).ready(function(){
 		
 		saveSurvey(function(){
 			isSaveProgress=false;
-			window.location.href=ctx+"/design/my-survey-design!previewDev.action?surveyId="+questionBelongId;
+			window.location.href=ctx+"/design/my-survey-design!previewDev?surveyId="+questionBelongId;
 		});
 		/*
 		var fristQuItemBody=$("#dwSurveyQuContent .li_surveyQuItemBody").first();
 		saveQus(fristQuItemBody,function(){
-			window.location.href=ctx+"/design/my-survey-design!previewDev.action?surveyId="+questionBelongId;
+			window.location.href=ctx+"/design/my-survey-design!previewDev?surveyId="+questionBelongId;
 		});*/
 		
 	});
@@ -974,7 +974,7 @@ $(document).ready(function(){
 		var svyNoteSaveTag=$("input[name='svyNoteSaveTag']").val();
 		var svyAttrSaveTag=$("input[name='svyAttrSaveTag']").val();
 		if( svyNmSaveTag==="0" || svyNoteSaveTag==="0" || svyAttrSaveTag==="0"){
-			var url=ctx+"/design/my-survey-design!ajaxSave.action";
+			var url=ctx+"/design/my-survey-design!ajaxSave";
 			var data="surveyId="+questionBelongId;
 			if(svyNmSaveTag==="0"){
 				var dwSurveyName=$("#dwSurveyName").html();
@@ -1215,7 +1215,7 @@ function bindQuHoverItem(){
 		if(confirm("确认要删除此题吗？")){
 			var quId=quBody.find("input[name='quId']").val();
 			if(quId!=""){
-				var url=ctx+"/design/question!ajaxDelete.action";
+				var url=ctx+"/design/question!ajaxDelete";
 				var data="quId="+quId;
 				$.ajax({
 					url:url,
@@ -2056,7 +2056,7 @@ function saveQus(quItemBody,callback){
 function saveRadio(quItemBody,callback){
 	var saveTag=quItemBody.find("input[name='saveTag']").val();
 	if(saveTag==0){
-		var url=ctx+"/design/qu-radio!ajaxSave.action";
+		var url=ctx+"/design/qu-radio!ajaxSave";
 		var quType=quItemBody.find("input[name='quType']").val();
 		var quId=quItemBody.find("input[name='quId']").val();
 		var orderById=quItemBody.find("input[name='orderById']").val();
@@ -2234,7 +2234,7 @@ function deleteRadioOption(){
 	}
 	var quOptionId=$(optionParent).find("input[name='quItemId']").val();
 	if(quOptionId!="" && quOptionId!="0" ){
-		var url=ctx+"/design/qu-radio!ajaxDelete.action";
+		var url=ctx+"/design/qu-radio!ajaxDelete";
 		var data="quItemId="+quOptionId;
 		$.ajax({
 			url:url,
@@ -2259,7 +2259,7 @@ function saveCheckbox(quItemBody,callback){
 	var saveTag=quItemBody.find("input[name='saveTag']").val();
 	if(saveTag==0){
 		
-		var url=ctx+"/design/qu-checkbox!ajaxSave.action";
+		var url=ctx+"/design/qu-checkbox!ajaxSave";
 		var quType=quItemBody.find("input[name='quType']").val();
 		var quId=quItemBody.find("input[name='quId']").val();
 		var orderById=quItemBody.find("input[name='orderById']").val();;
@@ -2436,7 +2436,7 @@ function deleteCheckboxOption(){
 	}
 	var quOptionId=$(optionParent).find("input[name='quItemId']").val();
 	if(quOptionId!="" && quOptionId!="0" ){
-		var url=ctx+"/design/qu-checkbox!ajaxDelete.action";
+		var url=ctx+"/design/qu-checkbox!ajaxDelete";
 		var data="quItemId="+quOptionId;
 		$.ajax({
 			url:url,
@@ -2525,7 +2525,7 @@ function movePareseLastTr(nextTr){
 function saveFillblank(quItemBody,callback){
 	var saveTag=quItemBody.find("input[name='saveTag']").val();
 	if(saveTag==0){
-		var url=ctx+"/design/qu-fillblank!ajaxSave.action";
+		var url=ctx+"/design/qu-fillblank!ajaxSave";
 		var quType=quItemBody.find("input[name='quType']").val();
 		var quId=quItemBody.find("input[name='quId']").val();
 		var orderById=quItemBody.find("input[name='orderById']").val();;
@@ -2619,7 +2619,7 @@ function saveFillblank(quItemBody,callback){
 function saveScore(quItemBody,callback){
 	var saveTag=quItemBody.find("input[name='saveTag']").val();
 	if(saveTag==0){
-		var url=ctx+"/design/qu-score!ajaxSave.action";
+		var url=ctx+"/design/qu-score!ajaxSave";
 		var quType=quItemBody.find("input[name='quType']").val();
 		var quId=quItemBody.find("input[name='quId']").val();
 		var orderById=quItemBody.find("input[name='orderById']").val();
@@ -2761,7 +2761,7 @@ function deleteScoreOption(){
 	
 	var quOptionId=$(optionParent).find("input[name='quItemId']").val();
 	if(quOptionId!="" && quOptionId!="0" ){
-		var url=ctx+"/design/qu-score!ajaxDelete.action";
+		var url=ctx+"/design/qu-score!ajaxDelete";
 		var data="quItemId="+quOptionId;
 		$.ajax({
 			url:url,
@@ -2786,7 +2786,7 @@ function deleteScoreOption(){
 function saveOrderqu(quItemBody,callback){
 	var saveTag=quItemBody.find("input[name='saveTag']").val();
 	if(saveTag==0){
-		var url=ctx+"/design/qu-orderqu!ajaxSave.action";
+		var url=ctx+"/design/qu-orderqu!ajaxSave";
 		var quType=quItemBody.find("input[name='quType']").val();
 		var quId=quItemBody.find("input[name='quId']").val();
 		var orderById=quItemBody.find("input[name='orderById']").val();
@@ -2924,7 +2924,7 @@ function deleteOrderquOption(){
 	
 	var quOptionId=$(optionParent).find("input[name='quItemId']").val();
 	if(quOptionId!="" && quOptionId!="0" ){
-		var url=ctx+"/design/qu-orderqu!ajaxDelete.action";
+		var url=ctx+"/design/qu-orderqu!ajaxDelete";
 		var data="quItemId="+quOptionId;
 		$.ajax({
 			url:url,
@@ -2951,7 +2951,7 @@ function deleteOrderquOption(){
 function savePagetag(quItemBody,callback){
 	var saveTag=quItemBody.find("input[name='saveTag']").val();
 	if(saveTag==0){
-		var url=ctx+"/design/qu-pagetag!ajaxSave.action";
+		var url=ctx+"/design/qu-pagetag!ajaxSave";
 		var quType=quItemBody.find("input[name='quType']").val();
 		var quId=quItemBody.find("input[name='quId']").val();
 		var orderById=quItemBody.find("input[name='orderById']").val();;
@@ -3034,7 +3034,7 @@ function savePagetag(quItemBody,callback){
 function saveParagraph(quItemBody,callback){
 	var saveTag=quItemBody.find("input[name='saveTag']").val();
 	if(saveTag==0){
-		var url=ctx+"/design/qu-paragraph!ajaxSave.action";
+		var url=ctx+"/design/qu-paragraph!ajaxSave";
 		var quType=quItemBody.find("input[name='quType']").val();
 		var quId=quItemBody.find("input[name='quId']").val();
 		var orderById=quItemBody.find("input[name='orderById']").val();;
@@ -3117,7 +3117,7 @@ function saveParagraph(quItemBody,callback){
 function saveMultiFillblank(quItemBody,callback){
 	var saveTag=quItemBody.find("input[name='saveTag']").val();
 	if(saveTag==0){
-		var url=ctx+"/design/qu-multi-fillblank!ajaxSave.action";
+		var url=ctx+"/design/qu-multi-fillblank!ajaxSave";
 		var quType=quItemBody.find("input[name='quType']").val();
 		var quId=quItemBody.find("input[name='quId']").val();
 		var orderById=quItemBody.find("input[name='orderById']").val();
@@ -3242,7 +3242,7 @@ function deleteMultiFillblankOption(){
 	
 	var quOptionId=$(optionParent).find("input[name='quItemId']").val();
 	if(quOptionId!="" && quOptionId!="0" ){
-		var url=ctx+"/design/qu-multi-fillblank!ajaxDelete.action";
+		var url=ctx+"/design/qu-multi-fillblank!ajaxDelete";
 		var data="quItemId="+quOptionId;
 		$.ajax({
 			url:url,
@@ -3268,7 +3268,7 @@ function deleteMultiFillblankOption(){
 function saveChen(quItemBody,callback){
 	var saveTag=quItemBody.find("input[name='saveTag']").val();
 	if(saveTag==0){
-		var url=ctx+"/design/qu-chen!ajaxSave.action";
+		var url=ctx+"/design/qu-chen!ajaxSave";
 		var quType=quItemBody.find("input[name='quType']").val();
 		var quId=quItemBody.find("input[name='quId']").val();
 		var orderById=quItemBody.find("input[name='orderById']").val();
@@ -3488,7 +3488,7 @@ function deleteChenColumnOption(){
 	optionParent=$(curEditObj).parents("td.quChenColumnTd");
 	var quOptionId=$(optionParent).find("input[name='quItemId']").val();
 	if(quOptionId!="" && quOptionId!="0" ){
-		var url=ctx+"/design/qu-chen!ajaxDeleteColumn.action";
+		var url=ctx+"/design/qu-chen!ajaxDeleteColumn";
 		var data="quItemId="+quOptionId;
 		$.ajax({
 			url:url,
@@ -3510,7 +3510,7 @@ function deleteChenRowOption(){
 	optionParent=$(curEditObj).parents("td.quChenRowTd");
 	var quOptionId=$(optionParent).find("input[name='quItemId']").val();
 	if(quOptionId!="" && quOptionId!="0" ){
-		var url=ctx+"/design/qu-chen!ajaxDeleteRow.action";
+		var url=ctx+"/design/qu-chen!ajaxDeleteRow";
 		var data="quItemId="+quOptionId;
 		$.ajax({
 			url:url,

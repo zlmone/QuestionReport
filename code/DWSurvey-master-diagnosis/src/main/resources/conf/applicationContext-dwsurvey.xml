@@ -6,20 +6,8 @@
 
 	<description>applicationContext文件列表</description>
 
-	 <!-- 	
-	 <import resource="jms/applicationContext-jms-simple.xml" />
-	<import resource="cache/applicationContext-ehcache.xml" />
-	<import resource="cache/applicationContext-memcached.xml" />
-	<import resource="jms/applicationContext-jms-advanced.xml" />
-	<import resource="jmx/applicationContext-jmx.xml" />
-	<import resource="log/applicationContext-log.xml" />
-	 <import resource="schedule/applicationContext-executor.xml" />
-	<import resource="schedule/applicationContext-quartz-cron-local.xml" />
-	<import resource="schedule/applicationContext-quartz-timer-cluster.xml" /> -->
 	<import resource="security/applicationContext-shiro.xml" />
-	<!-- <import resource="webservice/applicationContext-rs-server.xml" />-->
 	
 	<import resource="jcaptcha/applicationContext-jcaptcha-1.xml"/>
-    <!-- <import resource="jms/applicationContext-jms.xml" /> -->
 
 </beans>

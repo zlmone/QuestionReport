@@ -45,7 +45,7 @@ public class JspToHtml {
 		HttpServletRequest request = Struts2Utils.getRequest();
 		HttpServletResponse response = Struts2Utils.getResponse();
 		ServletContext sc = ServletActionContext.getServletContext();
-		url = "/my-survey-design!previewDev.action?surveyId=402880ea4675ac62014675ac7b3a0000";
+		url = "/my-survey-design!previewDev?surveyId=402880ea4675ac62014675ac7b3a0000";
 		// 这是生成的html文件名,如index.htm
 		filePath = filePath.replace("/", File.separator);
 		filePath = filePath.replace("\\", File.separator);

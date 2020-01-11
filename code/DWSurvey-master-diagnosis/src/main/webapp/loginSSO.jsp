@@ -202,7 +202,7 @@
                                                         name="jcaptchaInput" type="text" class=""
                                                         style="width: 100px;" autocomplete="off"> <img
                                                         id="jcaptchaImg" class="refreshJcaptchaImg"
-                                                        src="${ctx }/jcaptcha.action" alt="验证码" height="40"></span>
+                                                        src="${ctx }/jcaptcha" alt="验证码" height="40"></span>
                                             <a class="refreshJcaptchaImg" href="javascript:;"
                                                style="margin-left: 5px;">换一张</a> <span
                                                 class="frm_desc">输入下面图片的字符，不区分大小写</span>
@@ -260,8 +260,8 @@
                                 <div style="padding-left: 100px; font-size: 20px;">
                                     亲爱的&nbsp;<span style="color: #497289;"><shiro:principal></shiro:principal></span>&nbsp;您已经登陆
                                     <span style="margin-left: 10px;"><a
-                                            href="${ctx }/design/my-survey.action">问卷</a>&nbsp;&nbsp;</span> <a
-                                        href="${ctx }/login!logout.action">退出登录</a>
+                                            href="${ctx }/design/my-survey">问卷</a>&nbsp;&nbsp;</span> <a
+                                        href="${ctx }/login!logout">退出登录</a>
                                 </div>
                             </div>
                             <div>
@@ -304,7 +304,7 @@
         $("#username").val("service@diaowen.net");
         $("#passwordInput").val("123456");
         $("input[type=submit]").click();
-        $(location).attr('href', '${ctx }/design/my-survey.action');
+        $(location).attr('href', '${ctx }/design/my-survey');
     });
 </script>
 </body>

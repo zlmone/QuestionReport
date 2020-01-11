@@ -22,7 +22,7 @@
 	 
 	<bean id="formAuthFilter" class="com.key.common.plugs.security.FormAuthenticationWithLockFilter">
 		<property name="maxLoginAttempts" value="100"/>
-		<property name="successAdminUrl" value="/main.action?menu=3"/>
+		<property name="successAdminUrl" value="/main?menu=3"/>
 		<property name="successAdminRole" value="admin"/>
 		<property name="rememberMeParam" value="rememberMe"/>
 	</bean>
@@ -30,7 +30,7 @@
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
 		<property name="loginUrl" value="/login.jsp" />
-		<property name="successUrl" value="/design/my-survey.action" />
+		<property name="successUrl" value="/design/my-survey" />
 		<property name="unauthorizedUrl" value="/login.jsp?una=0" />
 		<property name="filters">
 			<util:map>

@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.key.common.plugs.ipaddr.IPService;
 import com.key.common.utils.DiaowenProperty;
 import com.key.common.utils.twodimension.TwoDimensionCode;
-import com.key.common.utils.web.Struts2Utils;
 import com.key.dwsurvey.entity.SurveyDirectory;
 import com.key.dwsurvey.entity.SurveyStyle;
 import com.key.dwsurvey.service.QuestionManager;
@@ -46,7 +45,7 @@ public class BaseRouteController {
 		baseUrl = request.getScheme() + "://" + request.getServerName()
 				+ (request.getServerPort() == 80 ? "" : ":" + request.getServerPort()) + request.getContextPath();
 
-		String encoderContent = baseUrl + "/response!answerMobile.action?surveyId=" + surveyId;
+		String encoderContent = baseUrl + "/response!answerMobile?surveyId=" + surveyId;
 		ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
 		BufferedImage twoDimensionImg = new TwoDimensionCode().qRCodeCommon(encoderContent, "jpg", 7);
 

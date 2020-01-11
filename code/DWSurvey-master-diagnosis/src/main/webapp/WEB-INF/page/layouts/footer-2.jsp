@@ -23,9 +23,9 @@
 	<div class="footer_menu">
 		<ul>
             <li><a href="${ctx }/index.jsp" class="currentNav">首页</a></li>
-            <li><a href="${ctx }/survey-lib.action">问卷库</a></li>
-            <li><a href="${ctx }/survey.action" >在线问卷</a></li>
-            <li><a href="${ctx }/survey-edu.action">问卷学院</a></li>
+            <li><a href="${ctx }/survey-lib">问卷库</a></li>
+            <li><a href="${ctx }/survey" >在线问卷</a></li>
+            <li><a href="${ctx }/survey-edu">问卷学院</a></li>
         </ul>
 	</div>
 	<div id="footer">

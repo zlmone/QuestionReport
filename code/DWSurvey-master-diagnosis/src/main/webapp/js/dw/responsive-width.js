@@ -94,7 +94,7 @@ $(window).resize(function(){
 });
 function refreshAutoCode(codeImgId){
 	var ctx=$("#ctx").val();
-	$("#"+codeImgId).attr("src",ctx+"/jcaptcha.action");
+	$("#"+codeImgId).attr("src",ctx+"/jcaptcha");
 }
 function currentMenu(menuId){
 	$(".dw-menu-a").removeClass("active");

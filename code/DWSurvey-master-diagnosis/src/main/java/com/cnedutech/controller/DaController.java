@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.key.common.base.entity.User;
 import com.key.common.base.service.AccountManager;
 import com.key.common.plugs.page.Page;
-import com.key.common.utils.web.Struts2Utils;
 import com.key.dwsurvey.entity.Question;
 import com.key.dwsurvey.entity.SurveyAnswer;
 import com.key.dwsurvey.entity.SurveyDirectory;

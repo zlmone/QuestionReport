@@ -34,7 +34,7 @@ $(document).ready(function(){
                     click: function() {
                         //执行发布
                     	var surveyId=$("#id").val();
-                    	window.location.href=ctx+"/design/my-survey-design!devSurvey.action?surveyId="+surveyId;
+                    	window.location.href=ctx+"/design/my-survey-design!devSurvey?surveyId="+surveyId;
                     }
 				},
 				"llll":{
@@ -43,14 +43,14 @@ $(document).ready(function(){
                     click: function() {
                       //$( this ).dialog( "close" );
                     	var surveyId=$("#id").val();
-                    	window.location.href=ctx+"/design/my-survey-design.action?surveyId="+surveyId;
+                    	window.location.href=ctx+"/design/my-survey-design?surveyId="+surveyId;
                     }
 				},
 				"CENCEL":{
                     text: "退出",
                     click: function() {
                       //$( this ).dialog( "close" );
-                    	window.location.href=ctx+"/design/my-survey.action";
+                    	window.location.href=ctx+"/design/my-survey";
                     }
 				}
 			},
@@ -80,7 +80,7 @@ $(document).ready(function(){
 				$("body").append("<div id=\"myDialogRoot\">"+data+"</div>");
 				$("#myDialogRoot .mailOnlyItem").hide();
 				
-				url=ctx+"/design/my-survey!attrs.action";
+				url=ctx+"/design/my-survey!attrs";
 				var data="id="+$("#id").val();
 				
 				$.ajax({
@@ -135,7 +135,7 @@ $(document).ready(function(){
 		                    text: "取消",
 		                    click: function() {
 		                    	$( this ).dialog( "close" );
-		                    	//window.location.href=ctx+"/design/my-survey.action";
+		                    	//window.location.href=ctx+"/design/my-survey";
 		                    }
 						}
 					},
@@ -154,7 +154,7 @@ $(document).ready(function(){
 	
 	function saveAttrs(){
 
-		var url=ctx+"/design/my-survey-style!save.action";
+		var url=ctx+"/design/my-survey-style!save";
 		var surveyId=$("#id").val();
 		var data="surveyId="+surveyId;
 		//收集规则 
@@ -190,7 +190,7 @@ $(document).ready(function(){
 	//
 	$(".sur_edit").unbind();
 	$(".sur_edit").click(function(){
-		//${ctx }/design/my-survey-design.action?surveyId=${surveyId}
+		//${ctx }/design/my-survey-design?surveyId=${surveyId}
 		
 		$("body").append("<div id=\"myDialogRoot\"><div class='dialogMessage'>您问卷已经发布，确认要重新编辑使问卷回到设计状态。<br/>是否确认返回设计状态！</div></div>");
 		var myDialog=$( "#myDialogRoot" ).dialog({
@@ -212,7 +212,7 @@ $(document).ready(function(){
                     click: function() {
                         //执行发布
                     	var surveyId=$("#id").val();
-                    	window.location.href=ctx+"/design/my-survey-design.action?surveyId="+surveyId;
+                    	window.location.href=ctx+"/design/my-survey-design?surveyId="+surveyId;
                     }
 				},
 				"CENCEL":{
@@ -248,7 +248,7 @@ $(document).ready(function(){
 			surveyState=1;
 		}
 		var ctx=$("#ctx").val();
-		var url=ctx+"/design/my-survey!surveyState.action";
+		var url=ctx+"/design/my-survey!surveyState";
 		var surveyId=$("#id").val();
 		var data="id="+surveyId+"&surveyState="+surveyState;
 		$.ajax({

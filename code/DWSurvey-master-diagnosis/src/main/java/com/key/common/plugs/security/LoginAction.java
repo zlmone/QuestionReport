@@ -34,7 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 @Results({
 	@Result(name = "login", location = "login.jsp", type = "redirect")
 	})
-@AllowedMethods({"login","logout"})
+@AllowedMethods({"logout"})
 public class LoginAction extends ActionSupport {
 
 	private static final long serialVersionUID = 7392913081177740732L;
@@ -43,54 +43,53 @@ public class LoginAction extends ActionSupport {
 	@Autowired
 	protected AccountManager accountManager;
 	
-	public String login() throws Exception {
-		
-		System.out.println("username1-1");
-		HttpServletRequest request = Struts2Utils.getRequest();
-		HttpServletResponse response = Struts2Utils.getResponse();
-		
-		Subject subject = SecurityUtils.getSubject();
-		boolean isAuth = subject.isAuthenticated();
-		// 返回成功与否
-		String error="";
-		Long resetnum=0L;
-		if (!isAuth) {
-//			String username = request.getParameter("username");
-//			String password = request.getParameter("password");
-			String username ="service@diaowen.net";
-			String password="123456";
-//			System.out.println(username+" "+password);
-			UsernamePasswordToken token = new UsernamePasswordToken(username,
-					password);
-			if(!formAuthFilter.checkIfAccountLocked(request)){
-				try {
-					subject.login(token);
-					formAuthFilter.resetAccountLock(username);
-					isAuth = true;
-				}catch (IncorrectCredentialsException e) {
-					formAuthFilter.decreaseAccountLoginAttempts(request);
-		            isAuth = false;
-		            error="IncorrectCredentialsException";
-		            resetnum=formAuthFilter.getAccountLocked(username);
-		        } catch (AuthenticationException e) {
-		            isAuth = false;
-		            error="AuthenticationException";
-		        }
-			}else{
-				//ExcessiveAttemptsException超过登录次数
-				 error="ExcessiveAttemptsException";
-			}
-		}
-		//PrintWriter writer = response.getWriter();    
-		//writer.write(isAuth + ","+error);//此种方式，在$.getJson()进行仿问时会出现不执行回调函数
-//		System.out.println(isAuth+","+error);
-		response.setContentType("text/plain");// 1.设置返回响应的类型
-		//2. 01 一定要注意：要包括jsoncallback参数，不然回调函数不执行。
-		//2. 02 返回的数据一定要是严格符合json格式 ，不然回调函数不执行。
-        response.getWriter().write( request.getParameter("jsoncallback") + "({isAuth:'"+isAuth+"',error:'"+error+"',resetnum:'"+resetnum+"'})" );
-		return null;
-		// 跳转到成功页面
-	}
+//	public String login() throws Exception {
+//		
+//		HttpServletRequest request = Struts2Utils.getRequest();
+//		HttpServletResponse response = Struts2Utils.getResponse();
+//		
+//		Subject subject = SecurityUtils.getSubject();
+//		boolean isAuth = subject.isAuthenticated();
+//		// 返回成功与否
+//		String error="";
+//		Long resetnum=0L;
+//		if (!isAuth) {
+////			String username = request.getParameter("username");
+////			String password = request.getParameter("password");
+//			String username ="service@diaowen.net";
+//			String password="123456";
+////			System.out.println(username+" "+password);
+//			UsernamePasswordToken token = new UsernamePasswordToken(username,
+//					password);
+//			if(!formAuthFilter.checkIfAccountLocked(request)){
+//				try {
+//					subject.login(token);
+//					formAuthFilter.resetAccountLock(username);
+//					isAuth = true;
+//				}catch (IncorrectCredentialsException e) {
+//					formAuthFilter.decreaseAccountLoginAttempts(request);
+//		            isAuth = false;
+//		            error="IncorrectCredentialsException";
+//		            resetnum=formAuthFilter.getAccountLocked(username);
+//		        } catch (AuthenticationException e) {
+//		            isAuth = false;
+//		            error="AuthenticationException";
+//		        }
+//			}else{
+//				//ExcessiveAttemptsException超过登录次数
+//				 error="ExcessiveAttemptsException";
+//			}
+//		}
+//		//PrintWriter writer = response.getWriter();    
+//		//writer.write(isAuth + ","+error);//此种方式，在$.getJson()进行仿问时会出现不执行回调函数
+////		System.out.println(isAuth+","+error);
+//		response.setContentType("text/plain");// 1.设置返回响应的类型
+//		//2. 01 一定要注意：要包括jsoncallback参数，不然回调函数不执行。
+//		//2. 02 返回的数据一定要是严格符合json格式 ，不然回调函数不执行。
+//        response.getWriter().write( request.getParameter("jsoncallback") + "({isAuth:'"+isAuth+"',error:'"+error+"',resetnum:'"+resetnum+"'})" );
+//		return null;
+//		// 跳转到成功页面
+//	}
 
 	public String logout() throws Exception {
 		System.out.println("............logout..................");

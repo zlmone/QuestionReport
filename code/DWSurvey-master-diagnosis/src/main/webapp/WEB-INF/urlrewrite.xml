@@ -15,16 +15,16 @@
        </rule> -->
        <rule>
               <from>/resp(.*)/(.*)/(.*)/(.*).html</from>
-              <to>/nosm/response!input.action?year=$1&amp;month=$2&amp;day=$3&amp;parentId=$4</to>
+              <to>/nosm/response!input?year=$1&amp;month=$2&amp;day=$3&amp;parentId=$4</to>
        </rule>
        
         <rule>
               <from>/wenjuan/(.*).html</from>
-              <to>/response.action?sid=$1</to>
+              <to>/response?sid=$1</to>
        </rule>
          <rule>
               <from>/schoolsurvey/(.*)/(.*)/(.*).html</from>
-              <to>/response!schoolSurvey.action?e_uid=$1&amp;e_desc=$2&amp;sid=$3</to>
+              <to>/response!schoolSurvey?e_uid=$1&amp;e_desc=$2&amp;sid=$3</to>
        </rule>
        <!-- 学生id，时间，节次 -->
     
