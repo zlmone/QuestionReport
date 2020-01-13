@@ -181,19 +181,7 @@
 	    <location>/common/error.jsp</location>
 	</error-page>
 	
-	<servlet>
-		<servlet-name>toHtml</servlet-name>
-		<servlet-class>com.key.common.utils.ToHtmlServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>toHtml</servlet-name>
-		<url-pattern>/toHtml</url-pattern>
-	</servlet-mapping>
 	
-	<listener>
-        <listener-class>com.key.common.utils.web.InitAppliction</listener-class>
-    </listener>
-    
 <!--     ======================== 单点登录开始 ========================  
     用于单点退出，该过滤器用于实现单点登出功能，可选配置  
     <listener>  

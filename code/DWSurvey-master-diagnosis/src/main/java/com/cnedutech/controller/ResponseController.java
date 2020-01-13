@@ -1,5 +1,7 @@
 package com.cnedutech.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,10 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.key.common.base.service.AccountManager;
 import com.key.common.plugs.ipaddr.IPService;
 import com.key.common.utils.CookieUtils;
+import com.key.common.utils.HttpRequestDeviceUtils;
 import com.key.common.utils.NumberUtils;
 import com.key.dwsurvey.entity.SurveyDetail;
 import com.key.dwsurvey.entity.SurveyDirectory;
@@ -38,11 +42,11 @@ public class ResponseController {
 	private ImageCaptchaService imageCaptchaService;
 	@Autowired
 	private EParametersManager eParametersManager;
-	
+
 	@RequestMapping("response!ajaxCheckSurvey")
 	@ResponseBody
-	public String ajaxCheckSurvey(HttpServletRequest request,HttpServletResponse response) throws Exception {
-		String surveyId =request.getParameter("surveyId");
+	public String ajaxCheckSurvey(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String surveyId = request.getParameter("surveyId");
 		// 0 1 2
 		String ajaxResult = "0";
 		try {
@@ -99,4 +103,64 @@ public class ResponseController {
 		return null;
 	}
 
+	@RequestMapping("response")
+	public ModelAndView  execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String surveyId;
+		String sid =request.getParameter("sid");
+		ModelAndView modelAndView  =null;
+		SurveyDirectory directory = directoryManager.getSurveyBySid(sid);
+		if (directory != null) {
+			surveyId = directory.getId();
+			String filterStatus = filterStatus(directory, request);
+			if (filterStatus != null) {
+
+				if (filterStatus.contains("answerError")) {
+					modelAndView= new ModelAndView("redirect:"+filterStatus+surveyId);
+					return modelAndView;
+				}else {
+					modelAndView= new ModelAndView(filterStatus);
+					return modelAndView;
+				}
+			}
+			
+			if (HttpRequestDeviceUtils.isMobileDevice(request)) {
+				modelAndView=  new ModelAndView("response!answerMobile?surveyId="+surveyId);
+				return modelAndView;
+			} else {
+				String htmlPath = directory.getHtmlPath();
+				request.getRequestDispatcher("/" + htmlPath).forward(request, response);
+			}
+			
+		}
+		return modelAndView;
+	}
+
+	private String filterStatus(SurveyDirectory directory, HttpServletRequest request) {
+		SurveyDetail surveyDetail = directory.getSurveyDetail();
+		int rule = surveyDetail.getRule();
+		Integer ynEndNum = surveyDetail.getYnEndNum();
+		Integer endNum = surveyDetail.getEndNum();
+		Integer ynEndTime = surveyDetail.getYnEndTime();
+		Date endTime = surveyDetail.getEndTime();
+		Integer anserNum = directory.getAnswerNum();
+
+		if (directory.getSurveyQuNum() <= 0 || directory.getSurveyState() != 1
+				|| (anserNum != null && ynEndNum == 1 && anserNum > endNum)
+				|| (endTime != null && ynEndTime == 1 && endTime.getTime() < (new Date().getTime()))) {
+			request.setAttribute("surveyName", "目前该问卷已暂停收集，请稍后再试");
+			request.setAttribute("msg", "目前该问卷已暂停收集，请稍后再试");
+			return "content/diaowen-answer/response-msg";
+		}
+		if (2 == rule) {
+			request.setAttribute("msg", "rule2");
+			return "response!answerError?surveyId=";
+		} else if (3 == rule) {
+			String ruleCode = request.getParameter("ruleCode");
+			String surveyRuleCode = surveyDetail.getRuleCode();
+			if (ruleCode == null || !ruleCode.equals(surveyRuleCode)) {
+				return "content/diaowen-answer/response-input-rule";
+			}
+		}
+		return null;
+	}
 }

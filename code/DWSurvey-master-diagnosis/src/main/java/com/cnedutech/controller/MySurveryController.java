@@ -29,11 +29,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cnedutech.service.MySurveyService;
 import com.key.common.base.entity.User;
 import com.key.common.base.service.AccountManager;
 import com.key.common.plugs.page.Page;
 import com.key.common.utils.DiaowenProperty;
-import com.key.common.utils.JspToHtml;
 import com.key.common.utils.web.Struts2Utils;
 import com.key.dwsurvey.entity.Question;
 import com.key.dwsurvey.entity.SurveyDetail;
@@ -63,6 +63,10 @@ public class MySurveryController {
 	
 	@Autowired
 	private SurveyDirectoryManager directoryManager;
+	
+	
+	@Autowired
+	MySurveyService mySurveyService ;
 	
 	@RequestMapping(value="/design/my-survey")
 	public ModelAndView my_survey(HttpServletRequest request,HttpServletResponse response,SurveyDirectory entity,Page page) throws Exception {
@@ -281,7 +285,7 @@ public class MySurveryController {
 	
 	@RequestMapping("/design/my-survey-design!devSurvey")
 	public ModelAndView devSurvey(HttpServletRequest request ,HttpServletResponse reponse) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("content/diaowen-design/release-success.jsp");
+		ModelAndView modelAndView = new ModelAndView("content/diaowen-design/release-success");
 		String surveyId = request.getParameter("surveyId");
 		SurveyDirectory survey=surveyDirectoryManager.get(surveyId);
 		Date createDate=survey.getCreateDate();
@@ -290,14 +294,15 @@ public class MySurveryController {
 			String url="/survey!answerSurvey?surveyId="+surveyId;
 			String filePath="WEB-INF/wjHtml/"+dateFormat.format(createDate);
 			String fileName=surveyId+".html";
-			new JspToHtml().postJspToHtml(url, filePath, fileName);
+			//new JspToHtml().postJspToHtml(url, filePath, fileName,request);
+			mySurveyService.postJspToHtml(url, filePath, fileName,request,reponse);
 			survey.setHtmlPath(filePath+fileName);
 
 			url="/survey!answerSurveryMobile?surveyId="+surveyId;
 			filePath="WEB-INF/wjHtml/"+dateFormat.format(createDate);
 			fileName="m_"+surveyId+".html";
-			new JspToHtml().postJspToHtml(url, filePath, fileName);
-
+			//new JspToHtml().postJspToHtml(url, filePath, fileName,request);
+			mySurveyService.postJspToHtml(url, filePath, fileName,request,reponse);
 			survey.setSurveyState(1);
 			surveyDirectoryManager.save(survey);
 		}catch (Exception e) {

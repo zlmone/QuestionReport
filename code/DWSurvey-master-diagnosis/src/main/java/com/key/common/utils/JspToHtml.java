@@ -25,8 +25,7 @@ import com.key.common.utils.web.Struts2Utils;
 
 public class JspToHtml {
 	
-	public void postJspToHtml(String postUrl, String filePath,String fileName) throws Exception{
-		HttpServletRequest request=Struts2Utils.getRequest();
+	public void postJspToHtml(String postUrl, String filePath,String fileName,	HttpServletRequest request) throws Exception{
 		//${pageContext.request.scheme}://${pageContext.request.serverName }:${pageContext.request.serverPort} pageContext.request.contextPath
 		String reqTarget = request.getScheme()+"://"+request.getServerName()+(request.getServerPort()==80?"":":"+request.getServerPort())+request.getContextPath();
 		reqTarget =reqTarget+"/toHtml";
@@ -36,7 +35,10 @@ public class JspToHtml {
 		map.put("filePath", filePath);
 		map.put("fileName", fileName);
 		Connection connection = Jsoup.connect(reqTarget);
-		connection.userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31");
+		connection.header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
+		connection.header("Accept-Encoding", "gzip, deflate, sdch");
+		connection.header("Accept-Language", "zh-CN,zh;q=0.8");
+		connection.header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36");
 		connection.data(map);
 		Document doc=connection.timeout(8000).get();
 	}
